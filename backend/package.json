@@ -1,0 +1,14 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend to access information from the Honor Roll Data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aarush Arora",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
