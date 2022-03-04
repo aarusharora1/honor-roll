@@ -11,7 +11,7 @@ app.all('*', function(req, res, next) {
   next();
 });
 app.get('/', (req, res) => {
-  res.send('Hello Express app!');
+  res.send('Invalid Request.');
   
 });
 

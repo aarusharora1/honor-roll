@@ -9,6 +9,7 @@
   "author": "Aarush Arora",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "winston": "^3.6.0"
   }
 }
