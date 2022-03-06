@@ -30,9 +30,11 @@ app.get("/search/firstName/:fName/lastName/:lName/year/:year", (req, res) => {
   var actualName = cleanUp(params);
   logRequest(req, actualName);
   if (!names[actualName]) {
-    res.send("Unable to find this person");
+    res.status(404).send("Unable to find this person");
   }
+  else{
   res.json(names[actualName]);
+  }
 });
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
