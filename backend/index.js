@@ -1,26 +1,10 @@
 const express = require("express");
 const fs = require("fs");
 const app = express();
-const winston = require("winston");
-
+const { logRequest } = require("./log.js");
 const rawdata = fs.readFileSync("output.json");
 const names = JSON.parse(rawdata);
 
-const logger = winston.createLogger({
-  transports: [new winston.transports.File({ filename: "request-log.log" })],
-});
-async function logRequest(request, actualName) {
-  var time = new Date();
-  var logString = request.ip + " requested " + actualName + " on " + time;
-  logger.log({
-    level: "info",
-    ip: request.ip,
-    actualName : actualName,
-    time: time,
-    string: logString
-  });
-  return Promise;
-}
 app.all("*", function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
@@ -50,6 +34,7 @@ app.get("/search/firstName/:fName/lastName/:lName/year/:year", (req, res) => {
   }
   res.json(names[actualName]);
 });
-app.listen(3000, () => {
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
   console.log("server started");
 });
