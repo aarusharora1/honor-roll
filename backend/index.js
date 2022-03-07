@@ -1,4 +1,6 @@
 const express = require("express");
+const path = require('path');
+
 const fs = require("fs");
 const app = express();
 const { logRequest } = require("./log.js");
@@ -13,6 +15,8 @@ app.all("*", function (req, res, next) {
 });
 app.get("/", (req, res) => {
   res.send("Invalid Request.");
+  //res.sendFile(path.join(__dirname, '../frontend/index.html'));
+  //res.sendFile(path.join(__dirname, '../frontend/submit.js'));
 });
 
 function cleanUp(params) {
@@ -40,3 +44,4 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log("server started");
 });
+module.exports = app;

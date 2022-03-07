@@ -37,17 +37,16 @@ async function submit() {
     year +
     "/";
   const endpoint2 =
-    "http://localhost:3000/search/firstName/" +
+    "https://oroou9dk5i.execute-api.us-east-1.amazonaws.com/honorRoll?fName=" +
     firstName +
-    "/lastName/" +
+    "&lName=" +
     lastName +
-    "/year/" +
-    year +
-    "/";
+    "&year=" +
+    year;
 
   //console.log(endpoint);
   output.innerHTML = "Loading...";
-  fetch(endpoint).then((response) => {
+  fetch(endpoint2).then((response) => {
     if (response.status == 200) {
       response
         .json()
@@ -64,4 +63,8 @@ async function submit() {
       Reset(document.getElementById("output-table"));
     }
   });
+}
+
+function penis() {
+  console.log("PENIS:");
 }
